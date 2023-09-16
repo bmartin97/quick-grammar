@@ -1,6 +1,6 @@
 # Contributing Guide
 
-* task board: 
+* task board: https://www.meistertask.com/app/project/yiGcjrtC/quick-grammar-dev-board
 * design: (in progress)
 
 ## Installing

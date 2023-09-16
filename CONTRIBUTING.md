@@ -53,6 +53,20 @@ Read More: https://www.gitkraken.com/learn/git/best-practices/git-commit-message
 
 **Don't use --no-verify flag** while commiting your changes. It bypasses the pre-commit hook.
 
+## Style Guide
+
+- Prefer functional component with hooks over class based components
+- Use function definition over arrow function where possible (except callbacks for example);
+- Use SCSS Modules with the following naming convention: `<componentname>.module.scss`
+- Use Pascal casing for component names e.g.: `Home.jsx`
+- Use Camel casing for function names, states, variables, contants e.g.: `getOptions()`
+- Use upper case snake case for constants wich defined on top level or high level. e.g: `MAX_VALID_TRIES = 3`
+- Prefer array map functions over for loops.
+- Keep the functions as smalls and possible
+- Avoid flag parameters for functions
+- use `const`` by default, change it to `let`` if you have to reassign the value.
+- don't use `var`
+
 ## Development Workflow
 
 1. Pick a ticket from meistertask

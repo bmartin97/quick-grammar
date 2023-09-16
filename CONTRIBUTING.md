@@ -31,6 +31,28 @@ npm run dev
 
 We are using GitHub Flow branching strategy on the project. The main release branch is the `master`, and each ticket has their own branch.
 
+## Git Workflow
+
+### Branches
+
+Template for naming branches:  
+`<tech|feature|bugfix>`**/QG-**`<ticket number>`**-**`<short description(dash separated)>`
+
+Explanation:
+
+1. `tech | feature | bugfix` - Ticket category (Meistertask)
+2. `QC` - Project code (Quick Grammar)
+3. `ticket number` - Ticket ID (Meistertask)
+4. `short description` - Your short description of the ticket/branch. Must be short and meaningful with separated by dashes
+
+### Commits
+
+**Use imperative verb form** in commit messages.
+
+Read More: https://www.gitkraken.com/learn/git/best-practices/git-commit-message#using-imperative-verb-form
+
+**Don't use --no-verify flag** while commiting your changes. It bypasses the pre-commit hook.
+
 ## Development Workflow
 
 1. Pick a ticket from meistertask
@@ -40,8 +62,7 @@ We are using GitHub Flow branching strategy on the project. The main release bra
    ```
    git switch master
    ```
-   Create branch with the following template:  
-    `<tech|feature|bugfix>`**/QG-**`<ticketnumber>`**-**`<short description(dash separated)>`
+   Create branch:  
    **Example**:
    ```
      git switch -c bugfix/QG-42-change-background-color

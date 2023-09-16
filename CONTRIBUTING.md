@@ -41,7 +41,7 @@ Template for naming branches:
 Explanation:
 
 1. `tech | feature | bugfix` - Ticket category (Meistertask)
-2. `QC` - Project code (Quick Grammar)
+2. `QG` - Project code (Quick Grammar)
 3. `ticket number` - Ticket ID (Meistertask)
 4. `short description` - Your short description of the ticket/branch. Must be short and meaningful with separated by dashes
 

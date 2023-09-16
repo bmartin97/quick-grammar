@@ -1,4 +1,4 @@
-# Quick Grammar 
+# Quick Grammar
 
 Simple grammar learning application with drag and drop tasks.
 
@@ -8,30 +8,35 @@ Simple grammar learning application with drag and drop tasks.
 
 ### Dependencies
 
-* Vite
-* React
-* SCSS
-* ESLint
-* Prettier
+- Vite
+- React
+- SCSS
+- ESLint
+- Prettier
+- Husky
 
 ### Installing
 
-* Clone the repository
+- Clone the repository
+
 ```
 git clone git@github.com:bmartin97/quick-grammar.git
 ```
 
-* Open the project directory
+- Open the project directory
+
 ```
 cd ./quick-grammar
 ```
 
-* Install dependencies
+- Install dependencies
+
 ```
 npm install
 ```
 
-* Run development mode
+- Run development mode
+
 ```
 npm run dev
 ```
@@ -44,7 +49,7 @@ TODO
 
 ## Authors
 
-* [@bmartin97](https://github.com/bmartin97/)
+- [@bmartin97](https://github.com/bmartin97/)
 
 ## License
 

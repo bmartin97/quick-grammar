@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './DraggableItem.module.scss';
 
 function DraggableItem({ text, color, onDrag }) {
@@ -14,5 +15,11 @@ function DraggableItem({ text, color, onDrag }) {
     </div>
   );
 }
+
+DraggableItem.propTypes = {
+  text: PropTypes.string,
+  color: PropTypes.string,
+  onDrag: PropTypes.func
+};
 
 export default DraggableItem;

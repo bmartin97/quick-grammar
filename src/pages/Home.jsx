@@ -88,27 +88,25 @@ function Home() {
 
   return (
     <div className={styles.home}>
-      <DropArea
-        color={'source'}
-        onDrop={(event) => onDrop(event, true)}
-        children={sources.map((source, index) => (
+      <DropArea color={'source'} onDrop={(event) => onDrop(event, true)}>
+        {sources.map((source, index) => (
           <DraggableItem
             key={index}
             text={source.text}
             color={source.bgColor}
             onDrag={(event) => onDrag(event, source)}></DraggableItem>
-        ))}></DropArea>
+        ))}
+      </DropArea>
 
-      <DropArea
-        color={`destination`}
-        onDrop={(event) => onDrop(event, false)}
-        children={destinations.map((destination, index) => (
+      <DropArea color={`destination`} onDrop={(event) => onDrop(event, false)}>
+        {destinations.map((destination, index) => (
           <DraggableItem
             key={index}
             text={destination.text}
             color={destination.bgColor}
             onDrag={(event) => onDrag(event, destination)}></DraggableItem>
-        ))}></DropArea>
+        ))}
+      </DropArea>
     </div>
   );
 }

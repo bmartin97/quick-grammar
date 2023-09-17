@@ -4,112 +4,110 @@ import DropArea from '../components/DropArea';
 import styles from './Home.module.scss';
 
 function Home() {
-  const [grammars, setGrammars] = useState([
+  const [sources, setSources] = useState([
     {
-      id: 1,
+      id: 'G-0',
       text: 'subject',
       bgColor: 'textOrange'
     },
     {
-      id: 2,
+      id: 'G-1',
       text: 'verb',
       bgColor: 'textPurple'
     },
     {
-      id: 3,
+      id: 'G-2',
       text: '+ing',
       bgColor: 'textPurpleLight'
     },
     {
-      id: 4,
+      id: 'G-3',
       text: '+s/es',
       bgColor: 'textPurpleLight'
     },
     {
-      id: 5,
+      id: 'G-4',
       text: 'question word',
       bgColor: 'textGreen'
     },
     {
-      id: 6,
+      id: 'G-5',
       text: 'did',
       bgColor: 'textMagenta'
     },
     {
-      id: 7,
+      id: 'G-6',
       text: 'do/does',
       bgColor: 'textMagenta'
     },
     {
-      id: 8,
+      id: 'G-7',
       text: 'have/has',
       bgColor: 'textMagenta'
     },
     {
-      id: 9,
+      id: 'G-8',
       text: 'was/were',
+      bgColor: 'textMagenta'
+    },
+    {
+      id: 'G-9',
+      text: 'will',
       bgColor: 'textMagenta'
     }
   ]);
-  const [selectedGrammars, setSelectedGrammars] = useState([]);
-  const [draggedGrammar, setDraggedGrammar] = useState();
 
-  const onDrag = (event, draggedG) => {
+  const [destinations, setDestinations] = useState([]);
+  const [draggedItem, setDraggedItem] = useState();
+
+  const onDrag = (event, draggedI) => {
     event.preventDefault();
-    setDraggedGrammar(draggedG);
+    setDraggedItem(draggedI);
   };
 
-  const onDrop = (event) => {
-    const isDraggedInGrammars = grammars.some((grammar) => {
-      return grammar.id === draggedGrammar.id;
-    });
-    const isDraggedInSelectedGrammars = selectedGrammars.some((grammar) => {
-      return grammar.id === draggedGrammar.id;
+  const onDrop = (event, isSource) => {
+    const destinationsWithoutDraggedItem = destinations.filter(
+      (destionation) => {
+        return destionation.id !== draggedItem.id;
+      }
+    );
+    const sourcesWithoutDraggedItem = sources.filter((source) => {
+      return source.id !== draggedItem.id;
     });
 
-    if (isDraggedInGrammars) {
-      const grammarsWithoutDragged = grammars.filter((grammar) => {
-        return grammar.id !== draggedGrammar.id;
-      });
-      setGrammars(grammarsWithoutDragged);
-    } else {
-      setGrammars([...grammars, draggedGrammar]);
+    if (isSource) {
+      setSources([...sourcesWithoutDraggedItem, draggedItem]);
+      setDestinations([...destinationsWithoutDraggedItem]);
     }
 
-    if (isDraggedInSelectedGrammars) {
-      const selectedGrammarsWithoutDragged = selectedGrammars.filter(
-        (grammar) => {
-          return grammar.id !== draggedGrammar.id;
-        }
-      );
-      setSelectedGrammars(selectedGrammarsWithoutDragged);
-    } else {
-      setSelectedGrammars([...selectedGrammars, draggedGrammar]);
+    if (!isSource) {
+      setSources([...sourcesWithoutDraggedItem]);
+      setDestinations([...destinationsWithoutDraggedItem, draggedItem]);
     }
   };
 
   return (
     <div className={styles.home}>
       <DropArea
-        color={'dopAreaStart'}
-        onDrop={(event) => onDrop(event)}
-        children={grammars.map((grammar, index) => (
+        color={'source'}
+        onDrop={(event) => onDrop(event, true)}
+        children={sources.map((source, index) => (
           <DraggableItem
             key={index}
-            text={grammar.text}
-            color={grammar.bgColor}
-            onDrag={(event) => onDrag(event, grammar)}></DraggableItem>
+            text={source.text}
+            color={source.bgColor}
+            onDrag={(event) => onDrag(event, source)}></DraggableItem>
         ))}></DropArea>
 
       <DropArea
-        color={'dopAreaEnd'}
-        onDrop={(event) => onDrop(event)}
-        children={selectedGrammars.map((grammar, index) => (
+        color={`destination`}
+        onDrop={(event) => onDrop(event, false)}
+        children={destinations.map((destination, index) => (
           <DraggableItem
             key={index}
-            text={grammar.text}
-            color={grammar.bgColor}
-            onDrag={(event) => onDrag(event, grammar)}></DraggableItem>
+            text={destination.text}
+            color={destination.bgColor}
+            onDrag={(event) => onDrag(event, destination)}></DraggableItem>
         ))}></DropArea>
     </div>
   );

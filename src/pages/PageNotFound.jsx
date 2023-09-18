@@ -1,9 +1,9 @@
 import styles from './PageNotFound.module.scss';
 
 function PageNotFound() {
-  let option = Math.random() > 0.5;
-  let image = option ? '/images/sherlock.png' : '/images/shakespeare.png';
-  let text = option
+  const option = Math.random() > 0.5;
+  const image = option ? '/images/sherlock.png' : '/images/shakespeare.png';
+  const text = option
     ? "Even Sherlock Holmes couldn't find this page.~"
     : 'Thou hast stumbled upon an uncharted kingdom of 404!~';
 

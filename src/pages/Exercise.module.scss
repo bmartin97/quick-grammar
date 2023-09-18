@@ -1,0 +1,17 @@
+.exercise {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+nav {
+  padding: 20px;
+  font-size: 20px;
+
+  a {
+    padding: 10px;
+    text-decoration: none;
+  }
+}

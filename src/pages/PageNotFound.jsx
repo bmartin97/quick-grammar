@@ -9,13 +9,13 @@ function PageNotFound() {
 
   return (
     <>
-      <div className={`${styles.pageNotFound}`}>
-        <div className={`${styles.textColumn}`}>
-          <div className={`${styles.errorCode}`}> 404 </div>
-          <div className={`${styles.sorryText}`}> SORRY! </div>
+      <div className={styles.pageNotFound}>
+        <div className={styles.textColumn}>
+          <div className={styles.errorCode}> 404 </div>
+          <div className={styles.sorryText}> SORRY! </div>
           <div>{text}</div>
         </div>
-        <div className={`${styles.imageColumn}`}>
+        <div className={styles.imageColumn}>
           <img src={image} alt='An fun image to look at' />
         </div>
       </div>

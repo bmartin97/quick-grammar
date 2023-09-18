@@ -13,7 +13,7 @@ $desktop: 1024px;
 
 .textColumn {
   width: 70%;
-  font-size: 2vw;
+  font-size: 40px;
   font-family: Arial;
   text-align: center;
 }
@@ -29,11 +29,11 @@ $desktop: 1024px;
 }
 
 .sorryText {
-  font-size: 6vw;
+  font-size: 80px;
 }
 
 .errorCode {
-  font-size: 20vw;
+  font-size: 250px;
   color: #c61b1b;
 }
 
@@ -45,10 +45,10 @@ $desktop: 1024px;
   }
   .textColumn {
     width: 100%;
-    font-size: 4vw;
+    font-size: 30px;
   }
   .imageColumn {
     width: 100%;
-    margin-top: 7vw;
+    margin-top: 30px;
   }
 }

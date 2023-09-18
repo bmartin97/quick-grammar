@@ -1,0 +1,16 @@
+.dropArea {
+  min-width: 90vw;
+  min-height: 2rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.4rem;
+  box-shadow: 0 0 3px 2px inset white;
+}
+
+.source {
+  background: black;
+}
+.destination {
+  background: rgb(207, 206, 206);
+}

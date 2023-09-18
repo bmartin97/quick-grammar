@@ -1,0 +1,27 @@
+.draggableItem {
+  display: inline-block;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  cursor: grab;
+  box-shadow: 0 0 4px 2px inset rgb(44, 44, 44);
+}
+
+.textOrange {
+  background: rgb(197, 128, 0);
+}
+
+.textPurple {
+  background: rgb(70, 10, 148);
+}
+
+.textPurpleLight {
+  background: rgb(133, 55, 236);
+}
+
+.textGreen {
+  background: rgb(0, 131, 0);
+}
+
+.textMagenta {
+  background: magenta;
+}

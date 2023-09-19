@@ -1,0 +1,54 @@
+$phone: 640px;
+$tablet: 768px;
+$desktop: 1024px;
+
+.pageNotFound {
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  background-image: url('/images/paperBackground.jpg');
+}
+
+.textColumn {
+  width: 70%;
+  font-size: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+
+.imageColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 40vw;
+  }
+  width: 30%;
+}
+
+.sorryText {
+  font-size: 80px;
+}
+
+.errorCode {
+  font-size: 250px;
+  color: #c61b1b;
+}
+
+@media screen and (max-width: $tablet) {
+  .pageNotFound {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  .textColumn {
+    width: 100%;
+    font-size: 30px;
+  }
+  .imageColumn {
+    width: 100%;
+    margin-top: 30px;
+  }
+}

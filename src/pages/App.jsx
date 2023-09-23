@@ -1,5 +1,7 @@
 import Home from './Home';
 import Exercise from './Exercise';
+import PageNotFound from './PageNotFound'
+import './App.module.scss'
 
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
@@ -18,6 +20,7 @@ const App = () => {
           <Routes>
             <Route index element={<Home />} />
             <Route path='Exercise' element={<Exercise />} />
+            <Route path='*' element={<PageNotFound />} />
           </Routes>
         </main>
       </BrowserRouter>

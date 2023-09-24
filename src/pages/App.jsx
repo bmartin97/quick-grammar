@@ -1,7 +1,7 @@
 import Home from './Home';
 import Exercise from './Exercise';
-import PageNotFound from './PageNotFound'
-import './App.module.scss'
+import PageNotFound from './PageNotFound';
+import './App.module.scss';
 
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 

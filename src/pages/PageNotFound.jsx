@@ -1,8 +1,10 @@
 import styles from './PageNotFound.module.scss';
+import Sherlock from '@/assets/images/sherlock.png';
+import Shakespeare from '@/assets/images/shakespeare.png';
 
 function PageNotFound() {
   const option = Math.random() > 0.5;
-  const image = option ? '/images/sherlock.png' : '/images/shakespeare.png';
+  const image = option ? Sherlock : Shakespeare;
   const text = option
     ? "Even Sherlock Holmes couldn't find this page.~"
     : 'Thou hast stumbled upon an uncharted kingdom of 404!~';

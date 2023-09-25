@@ -1,0 +1,32 @@
+@font-face {
+  font-family: Amiko;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Amiko'),
+    url(@/assets/fonts/Amiko-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Amiko;
+  font-style: normal;
+  font-weight: 600;
+  src:
+    local('Amiko SemiBold'),
+    url(@/assets/fonts/Amiko-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Amiko;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local('Amiko Bold'),
+    url(@/assets/fonts/Amiko-Bold.ttf) format('truetype');
+}
+
+html,
+body {
+  margin: 0;
+  font-family: Amiko;
+}

@@ -1,51 +1,41 @@
 $dark-degree: 70%;
+$light-degree: 10%;
 $orange: #ff6e5b;
-$orange-dark: darken($orange, $dark-degree);
 $blue: #5fdaf5;
-$blue-dark: darken($blue, $dark-degree);
 $yellow: #f5ef5f;
-$yellow-dark: darken($yellow, $dark-degree);
+
+@mixin draggable($color) {
+  $dark-color: darken($color, $dark-degree);
+  background-color: $color;
+  border-color: $dark-color;
+  color: $dark-color;
+  &:hover {
+    background-color: lighten($color, $light-degree);
+    border-color: lighten($dark-color, $light-degree);
+    color: lighten($dark-color, $light-degree);
+  }
+}
 
 .draggableItem {
   display: inline-block;
   padding: 0.3rem 0.6rem;
   cursor: grab;
-  border-width: 4px;
-  border-bottom: 7px;
+  border-width: 5px;
+  border-bottom: 8px;
   border-style: solid;
   border-radius: 10px;
   font-size: 30px;
+  font-weight: 600;
 }
 
 .orange {
-  background-color: $orange;
-  border-color: $orange-dark;
-  color: $orange-dark;
-  &:hover {
-    background-color: lighten($orange, 10%);
-    border-color: lighten($orange-dark, 10%);
-    color: lighten($orange-dark, 10%);
-  }
+  @include draggable($orange);
 }
 
 .blue {
-  background-color: $blue;
-  border-color: $blue-dark;
-  color: $blue-dark;
-  &:hover {
-    background-color: lighten($blue, 10%);
-    border-color: lighten($blue-dark, 10%);
-    color: lighten($blue-dark, 10%);
-  }
+  @include draggable($blue);
 }
 
 .yellow {
-  background-color: $yellow;
-  border-color: $yellow-dark;
-  color: $yellow-dark;
-  &:hover {
-    background-color: lighten($yellow, 10%);
-    border-color: lighten($yellow-dark, 10%);
-    color: lighten($yellow-dark, 10%);
-  }
+  @include draggable($yellow);
 }

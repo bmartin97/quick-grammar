@@ -2,10 +2,9 @@ import { useState } from 'react';
 import DraggableItem from '../components/DraggableItem';
 import DropArea from '../components/DropArea';
 import styles from './Exercise.module.scss';
-import { COLORS } from './Helper.js';
+import { DRAGGABLE_ITEM_COLORS as COLORS } from '../components/Helper.js';
 
 function Exercise() {
-  console.log(DraggableItem);
   const [sources, setSources] = useState([
     {
       id: 'G-0',

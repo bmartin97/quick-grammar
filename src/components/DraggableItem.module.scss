@@ -1,27 +1,51 @@
+$dark-degree: 70%;
+$orange: #ff6e5b;
+$orange-dark: darken($orange, $dark-degree);
+$blue: #5fdaf5;
+$blue-dark: darken($blue, $dark-degree);
+$yellow: #f5ef5f;
+$yellow-dark: darken($yellow, $dark-degree);
+
 .draggableItem {
   display: inline-block;
-  color: white;
-  padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   cursor: grab;
-  box-shadow: 0 0 4px 2px inset rgb(44, 44, 44);
+  border-width: 4px;
+  border-bottom: 7px;
+  border-style: solid;
+  border-radius: 10px;
+  font-size: 30px;
 }
 
-.textOrange {
-  background: rgb(197, 128, 0);
+.orange {
+  background-color: $orange;
+  border-color: $orange-dark;
+  color: $orange-dark;
+  &:hover {
+    background-color: lighten($orange, 10%);
+    border-color: lighten($orange-dark, 10%);
+    color: lighten($orange-dark, 10%);
+  }
 }
 
-.textPurple {
-  background: rgb(70, 10, 148);
+.blue {
+  background-color: $blue;
+  border-color: $blue-dark;
+  color: $blue-dark;
+  &:hover {
+    background-color: lighten($blue, 10%);
+    border-color: lighten($blue-dark, 10%);
+    color: lighten($blue-dark, 10%);
+  }
 }
 
-.textPurpleLight {
-  background: rgb(133, 55, 236);
-}
-
-.textGreen {
-  background: rgb(0, 131, 0);
-}
-
-.textMagenta {
-  background: magenta;
+.yellow {
+  background-color: $yellow;
+  border-color: $yellow-dark;
+  color: $yellow-dark;
+  &:hover {
+    background-color: lighten($yellow, 10%);
+    border-color: lighten($yellow-dark, 10%);
+    color: lighten($yellow-dark, 10%);
+  }
 }

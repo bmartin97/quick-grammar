@@ -28,7 +28,7 @@ function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
 DraggableItem.propTypes = {
   children: PropTypes.node.isRequired,
   onDrag: PropTypes.func.isRequired,
-  onDragEnd: PropTypes.func.isRequired,
+  onDragEnd: PropTypes.func,
   onDrop: PropTypes.func.isRequired
 };
 

@@ -75,18 +75,20 @@ function DropArea({ defaultItems, setDraggedElement, draggedElement }) {
 }
 
 DropArea.propTypes = {
-  defaultItems: PropTypes.shape({
-    value: PropTypes.string,
-    component: PropTypes.component,
-    props: PropTypes.object
-  }),
-  setDraggedElement: PropTypes.func,
+  defaultItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      component: PropTypes.elementType,
+      props: PropTypes.object
+    })
+  ).isRequired,
+  setDraggedElement: PropTypes.func.isRequired,
   draggedElement: PropTypes.shape({
     value: PropTypes.string,
-    component: PropTypes.component,
+    component: PropTypes.elementType,
     props: PropTypes.object,
     clean: PropTypes.func,
-    source: PropTypes.element
+    source: PropTypes.object
   })
 };
 

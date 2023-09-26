@@ -2,58 +2,59 @@ import { useState } from 'react';
 import DraggableItem from '../components/DraggableItem';
 import DropArea from '../components/DropArea';
 import styles from './Exercise.module.scss';
+import { DRAGGABLE_ITEM_COLORS as COLORS } from '../components/Helper.js';
 
 function Exercise() {
   const [sources, setSources] = useState([
     {
       id: 'G-0',
       text: 'subject',
-      bgColor: 'textOrange'
+      bgColor: COLORS.orange
     },
     {
       id: 'G-1',
       text: 'verb',
-      bgColor: 'textPurple'
+      bgColor: COLORS.blue
     },
     {
       id: 'G-2',
       text: '+ing',
-      bgColor: 'textPurpleLight'
+      bgColor: COLORS.orange
     },
     {
       id: 'G-3',
       text: '+s/es',
-      bgColor: 'textPurpleLight'
+      bgColor: COLORS.blue
     },
     {
       id: 'G-4',
       text: 'question word',
-      bgColor: 'textGreen'
+      bgColor: COLORS.orange
     },
     {
       id: 'G-5',
       text: 'did',
-      bgColor: 'textMagenta'
+      bgColor: COLORS.yellow
     },
     {
       id: 'G-6',
       text: 'do/does',
-      bgColor: 'textMagenta'
+      bgColor: COLORS.orange
     },
     {
       id: 'G-7',
       text: 'have/has',
-      bgColor: 'textMagenta'
+      bgColor: COLORS.yellow
     },
     {
       id: 'G-8',
       text: 'was/were',
-      bgColor: 'textMagenta'
+      bgColor: COLORS.orange
     },
     {
       id: 'G-9',
       text: 'will',
-      bgColor: 'textMagenta'
+      bgColor: COLORS.blue
     }
   ]);
 

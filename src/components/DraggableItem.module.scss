@@ -1,27 +1,41 @@
+$dark-degree: 70%;
+$light-degree: 10%;
+$orange: #ff6e5b;
+$blue: #5fdaf5;
+$yellow: #f5ef5f;
+
+@mixin draggable($color) {
+  $dark-color: darken($color, $dark-degree);
+  background-color: $color;
+  border-color: $dark-color;
+  color: $dark-color;
+  &:hover {
+    background-color: lighten($color, $light-degree);
+    border-color: lighten($dark-color, $light-degree);
+    color: lighten($dark-color, $light-degree);
+  }
+}
+
 .draggableItem {
   display: inline-block;
-  color: white;
-  padding: 0.3rem 0.5rem;
+  padding: 6px 12px;
   cursor: grab;
-  box-shadow: 0 0 4px 2px inset rgb(44, 44, 44);
+  border-width: 5px;
+  border-bottom: 8px;
+  border-style: solid;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 600;
 }
 
-.textOrange {
-  background: rgb(197, 128, 0);
+.orange {
+  @include draggable($orange);
 }
 
-.textPurple {
-  background: rgb(70, 10, 148);
+.blue {
+  @include draggable($blue);
 }
 
-.textPurpleLight {
-  background: rgb(133, 55, 236);
-}
-
-.textGreen {
-  background: rgb(0, 131, 0);
-}
-
-.textMagenta {
-  background: magenta;
+.yellow {
+  @include draggable($yellow);
 }

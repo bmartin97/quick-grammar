@@ -8,19 +8,19 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename='/quick-grammar'>
         <header>
           <nav>
             <NavLink to='/'>Home</NavLink>
-            <NavLink to='Exercise'>Exercise</NavLink>
+            <NavLink to='/Exercise'>Exercise</NavLink>
           </nav>
         </header>
 
         <main>
           <Routes>
             <Route index element={<Home />} />
-            <Route path='Exercise' element={<Exercise />} />
-            <Route path='*' element={<PageNotFound />} />
+            <Route path='/Exercise' element={<Exercise />} />
+            <Route path='/*' element={<PageNotFound />} />
           </Routes>
         </main>
       </BrowserRouter>

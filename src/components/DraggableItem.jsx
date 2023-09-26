@@ -1,25 +1,45 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './DraggableItem.module.scss';
 
-function DraggableItem({ text, color, onDrag }) {
-  const handleDrag = (event) => {
-    onDrag(event);
-  };
+function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
+  const [hover, setHover] = useState(false);
 
   return (
     <div
-      className={`${styles.draggableItem} ${styles[color]}`}
       draggable
-      onDrag={handleDrag}>
-      {text}
+      style={{
+        display: 'flex',
+        alignItems: 'center'
+      }}
+      onDrag={onDrag}
+      onDragEnd={onDragEnd}
+      onDrop={() => {
+        onDrop();
+        setHover(false);
+      }}
+      onDragOver={() => setHover(true)}
+      onDragLeave={() => setHover(false)}>
+      {hover && <Line />}
+      {children}
     </div>
   );
 }
 
 DraggableItem.propTypes = {
-  text: PropTypes.string,
-  color: PropTypes.string,
-  onDrag: PropTypes.func
+  children: PropTypes.node.isRequired,
+  onDrag: PropTypes.func.isRequired,
+  onDragEnd: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired
 };
+
+export const Line = () => (
+  <div
+    style={{
+      width: '5px',
+      backgroundColor: 'blue',
+      height: '30px',
+      marginRight: '10px'
+    }}></div>
+);
 
 export default DraggableItem;

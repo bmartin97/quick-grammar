@@ -3,14 +3,9 @@
   min-height: 2rem;
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 1rem;
   padding: 0.4rem;
+  gap: 1rem;
   box-shadow: 0 0 3px 2px inset white;
-}
-
-.source {
-  background: black;
-}
-.destination {
+  align-items: start;
   background: rgb(207, 206, 206);
 }

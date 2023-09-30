@@ -44,6 +44,7 @@ function Exercise() {
           setDraggedElement={setDraggedElement}
         />
         <DropArea
+          to
           color={'destination'}
           defaultItems={[]}
           draggedElement={draggedElement}

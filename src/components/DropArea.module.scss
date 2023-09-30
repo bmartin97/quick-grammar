@@ -1,11 +1,28 @@
 .dropArea {
-  min-width: 90vw;
   min-height: 2rem;
+  max-width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
-  padding: 0.4rem;
-  gap: 1rem;
-  box-shadow: 0 0 3px 2px inset white;
+  padding: 20px;
+  gap: 20px;
   align-items: start;
-  background: rgb(207, 206, 206);
+  border: 3px;
+}
+
+.dropAreaFrom {
+  border-radius: 20px;
+  border-style: dashed;
+  width: 800px;
+  background-color: transparent;
+}
+
+.dropAreaTo {
+  width: 600px;
+  border-width: 3px;
+  border-bottom: 10px;
+  border-style: solid;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #fdeedd;
+  border-color: #422b11;
 }

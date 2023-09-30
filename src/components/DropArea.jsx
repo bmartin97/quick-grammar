@@ -4,10 +4,13 @@ import DraggableItem from './DraggableItem';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function DropArea({ defaultItems, setDraggedElement, draggedElement }) {
+function DropArea({ defaultItems, setDraggedElement, draggedElement, to }) {
   const [items, setItems] = useState(defaultItems);
   const element = useRef();
-
+  const classes = [
+    styles.dropArea,
+    to ? styles.dropAreaTo : styles.dropAreaFrom
+  ];
   const nonDraggedElement = (item) => item.value !== draggedElement.value;
 
   const isNewItem = () => element.current !== draggedElement.source;
@@ -47,7 +50,7 @@ function DropArea({ defaultItems, setDraggedElement, draggedElement }) {
   return (
     <div
       ref={element}
-      className={styles.dropArea}
+      className={classes.join(' ')}
       onDrop={handleOnDrop}
       onDragOver={(event) => {
         event.preventDefault();
@@ -89,7 +92,8 @@ DropArea.propTypes = {
     props: PropTypes.object,
     clean: PropTypes.func,
     source: PropTypes.object
-  })
+  }),
+  to: PropTypes.bool
 };
 
 export default DropArea;

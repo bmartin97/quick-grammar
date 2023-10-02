@@ -2,7 +2,7 @@ import { useState } from 'react';
 import DropArea from '../components/DropArea';
 import styles from './Exercise.module.scss';
 import Card from '../components/Card';
-import { CARD_COLORS } from '../components/Helper';
+import { CARD_COLORS, DROPAREA_THEMES } from '../components/Helper';
 
 const defaultItems = [
   {
@@ -38,14 +38,13 @@ function Exercise() {
     <>
       <div className={styles.exercise}>
         <DropArea
-          color={'destination'}
+          theme={DROPAREA_THEMES.dashed}
           defaultItems={defaultItems}
           draggedElement={draggedElement}
           setDraggedElement={setDraggedElement}
         />
         <DropArea
-          to
-          color={'destination'}
+          theme={DROPAREA_THEMES.cartoon}
           defaultItems={[]}
           draggedElement={draggedElement}
           setDraggedElement={setDraggedElement}></DropArea>

@@ -3,11 +3,12 @@ import styles from './DropArea.module.scss';
 import DraggableItem from './DraggableItem';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { DROPAREA_THEMES } from './Helper';
 
-function DropArea({ defaultItems, setDraggedElement, draggedElement }) {
+function DropArea({ defaultItems, setDraggedElement, draggedElement, theme }) {
   const [items, setItems] = useState(defaultItems);
   const element = useRef();
-
+  const classes = [styles.dropArea, styles[theme]];
   const nonDraggedElement = (item) => item.value !== draggedElement.value;
 
   const isNewItem = () => element.current !== draggedElement.source;
@@ -47,7 +48,7 @@ function DropArea({ defaultItems, setDraggedElement, draggedElement }) {
   return (
     <div
       ref={element}
-      className={styles.dropArea}
+      className={classes.join(' ')}
       onDrop={handleOnDrop}
       onDragOver={(event) => {
         event.preventDefault();
@@ -89,7 +90,8 @@ DropArea.propTypes = {
     props: PropTypes.object,
     clean: PropTypes.func,
     source: PropTypes.object
-  })
+  }),
+  theme: PropTypes.oneOf(Object.values(DROPAREA_THEMES)).isRequired
 };
 
 export default DropArea;

@@ -47,7 +47,8 @@ function Exercise() {
           theme={DROPAREA_THEMES.cartoon}
           defaultItems={[]}
           draggedElement={draggedElement}
-          setDraggedElement={setDraggedElement}></DropArea>
+          setDraggedElement={setDraggedElement}
+        />
       </div>
     </>
   );

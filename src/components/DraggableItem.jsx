@@ -39,7 +39,8 @@ export const Line = () => (
       backgroundColor: 'blue',
       height: '30px',
       marginRight: '10px'
-    }}></div>
+    }}
+  />
 );
 
 export default DraggableItem;

@@ -1,5 +1,5 @@
 import Home from './Home';
-import Exercise from './Exercise';
+import NewExerciseTasks from './NewExerciseTasks';
 import PageNotFound from './PageNotFound';
 import './App.module.scss';
 
@@ -25,7 +25,7 @@ const App = () => {
           <main>
             <Routes>
               <Route index element={<Home />} />
-              <Route path='/Exercise' element={<Exercise />} />
+              <Route path='/Exercise' element={<NewExerciseTasks />} />
               <Route path='/*' element={<PageNotFound />} />
             </Routes>
           </main>

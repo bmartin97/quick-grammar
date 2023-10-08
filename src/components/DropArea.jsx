@@ -86,14 +86,6 @@ DropArea.propTypes = {
       props: PropTypes.object
     })
   ).isRequired,
-  setDraggedElement: PropTypes.func.isRequired,
-  draggedElement: PropTypes.shape({
-    value: PropTypes.string,
-    component: PropTypes.elementType,
-    props: PropTypes.object,
-    clean: PropTypes.func,
-    source: PropTypes.object
-  }),
   theme: PropTypes.oneOf(Object.values(DROPAREA_THEMES)).isRequired
 };
 

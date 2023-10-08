@@ -1,11 +1,14 @@
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
+import { Context } from '../pages/App';
+
 import styles from './DropArea.module.scss';
 import DraggableItem from './DraggableItem';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DROPAREA_THEMES } from './Helper';
 
-function DropArea({ defaultItems, setDraggedElement, draggedElement, theme }) {
+function DropArea({ defaultItems, theme }) {
+  const { draggedElement, setDraggedElement } = useContext(Context);
   const [items, setItems] = useState(defaultItems);
   const element = useRef();
   const classes = [styles.dropArea, styles[theme]];

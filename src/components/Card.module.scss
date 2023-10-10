@@ -3,6 +3,8 @@ $light-degree: 10%;
 $orange: #ff6e5b;
 $blue: #5fdaf5;
 $yellow: #f5ef5f;
+$magenta: #ff00ff;
+$green: #2da15d;
 
 @mixin draggable($color) {
   $dark-color: darken($color, $dark-degree);
@@ -38,4 +40,12 @@ $yellow: #f5ef5f;
 
 .yellow {
   @include draggable($yellow);
+}
+
+.magenta {
+  @include draggable($magenta);
+}
+
+.green {
+  @include draggable($green);
 }

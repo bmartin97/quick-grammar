@@ -13,7 +13,7 @@ const Exercise = ({ defaultItems, taskName, description }) => {
       </div>
       <div className={styles.exercise}>
         <DropArea theme={DROPAREA_THEMES.dashed} defaultItems={defaultItems} />
-        <DropArea theme={DROPAREA_THEMES.cartoon} defaultItems={[]}></DropArea>
+        <DropArea theme={DROPAREA_THEMES.cartoon} defaultItems={[]} />
       </div>
     </div>
   );

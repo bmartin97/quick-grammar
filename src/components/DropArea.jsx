@@ -7,12 +7,12 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DROPAREA_THEMES } from './Helper';
 
-function DropArea({ defaultItems, theme }) {
+function DropArea({ defaultItems, theme, taskId }) {
   const { draggedElement, setDraggedElement } = useContext(Context);
   const [items, setItems] = useState(defaultItems);
   const element = useRef();
   const classes = [styles.dropArea, styles[theme]];
-  const nonDraggedElement = (item) => item.value !== draggedElement.value;
+  const nonDraggedElement = (item) => item.key !== draggedElement.key;
 
   const isNewItem = () => element.current !== draggedElement.source;
 
@@ -20,6 +20,7 @@ function DropArea({ defaultItems, theme }) {
     if (event.target !== element.current) {
       return;
     }
+    if (draggedElement.taskId != element.current.getAttribute('id')) return;
 
     if (isNewItem()) {
       draggedElement?.clean();
@@ -50,6 +51,7 @@ function DropArea({ defaultItems, theme }) {
 
   return (
     <div
+      id={taskId}
       ref={element}
       className={classes.join(' ')}
       onDrop={handleOnDrop}
@@ -58,7 +60,7 @@ function DropArea({ defaultItems, theme }) {
       }}>
       {items.map((item, index) => {
         const { component: Component, props, value } = item;
-
+        item.key = value + index;
         return (
           <DraggableItem
             key={value + index}
@@ -66,7 +68,8 @@ function DropArea({ defaultItems, theme }) {
               setDraggedElement({
                 ...item,
                 clean: removeDraggedElement,
-                source: element.current
+                source: element.current,
+                taskId: taskId
               })
             }
             onDrop={() => handleItemDrop(value)}>
@@ -86,7 +89,8 @@ DropArea.propTypes = {
       props: PropTypes.object
     })
   ).isRequired,
-  theme: PropTypes.oneOf(Object.values(DROPAREA_THEMES)).isRequired
+  theme: PropTypes.oneOf(Object.values(DROPAREA_THEMES)).isRequired,
+  taskId: PropTypes.number.isRequired
 };
 
 export default DropArea;

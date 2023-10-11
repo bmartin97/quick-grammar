@@ -4,7 +4,7 @@ import DropArea from '../components/DropArea';
 import styles from './Exercise.module.scss';
 import { DROPAREA_THEMES } from '../components/Helper';
 
-const Exercise = ({ defaultItems, taskName, description }) => {
+const Exercise = ({ defaultItems, taskName, description, taskId }) => {
   return (
     <div style={{ padding: '20px 0 80px 0 ' }}>
       <div style={{ margin: ' auto', width: '650px', paddingBottom: '20px' }}>
@@ -12,8 +12,16 @@ const Exercise = ({ defaultItems, taskName, description }) => {
         <p>{description}</p>
       </div>
       <div className={styles.exercise}>
-        <DropArea theme={DROPAREA_THEMES.dashed} defaultItems={defaultItems} />
-        <DropArea theme={DROPAREA_THEMES.cartoon} defaultItems={[]} />
+        <DropArea
+          theme={DROPAREA_THEMES.dashed}
+          defaultItems={defaultItems}
+          taskId={taskId}
+        />
+        <DropArea
+          theme={DROPAREA_THEMES.cartoon}
+          defaultItems={[]}
+          taskId={taskId}
+        />
       </div>
     </div>
   );
@@ -22,7 +30,8 @@ const Exercise = ({ defaultItems, taskName, description }) => {
 Exercise.propTypes = {
   defaultItems: PropTypes.array.isRequired,
   taskName: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  taskId: PropTypes.number.isRequired
 };
 
 export default Exercise;

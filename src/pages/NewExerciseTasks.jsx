@@ -8,7 +8,6 @@ const NewExerciseTasks = () => {
         return (
           <Exercise
             key={item.id}
-            taskId={item.id}
             defaultItems={item.defaultItems}
             taskName={item.taskName}
             description={item.description}

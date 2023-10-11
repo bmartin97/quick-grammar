@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 import DropArea from '../components/DropArea';
 import styles from './Exercise.module.scss';
 import { DROPAREA_THEMES } from '../components/Helper';
 
-const Exercise = ({ defaultItems, taskName, description, taskId }) => {
+const Exercise = ({ defaultItems, taskName, description }) => {
+  const [taskId] = useState(Math.random());
   return (
     <div style={{ padding: '20px 0 80px 0 ' }}>
       <div style={{ margin: ' auto', width: '650px', paddingBottom: '20px' }}>
@@ -30,8 +32,7 @@ const Exercise = ({ defaultItems, taskName, description, taskId }) => {
 Exercise.propTypes = {
   defaultItems: PropTypes.array.isRequired,
   taskName: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  taskId: PropTypes.number.isRequired
+  description: PropTypes.string.isRequired
 };
 
 export default Exercise;

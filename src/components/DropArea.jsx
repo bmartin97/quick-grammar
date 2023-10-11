@@ -31,18 +31,17 @@ function DropArea({ defaultItems, theme, taskId }) {
   };
 
   const handleItemDrop = (value) => {
-    if (isNewItem()) {
+    if (isNewItem() && draggedElement.taskId == taskId) {
       draggedElement?.clean();
     }
     if (value === draggedElement.value) {
       return;
     }
-
     const clearedItems = items.filter(nonDraggedElement);
 
     const targetIndex = clearedItems.findIndex((e) => e.value === value);
-
-    setItems(clearedItems.toSpliced(targetIndex, 0, draggedElement));
+    if (draggedElement.taskId == taskId)
+      setItems(clearedItems.toSpliced(targetIndex, 0, draggedElement));
   };
 
   const removeDraggedElement = () => {

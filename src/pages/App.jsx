@@ -1,12 +1,11 @@
-import Home from './Home';
-import NewExerciseTasks from './NewExerciseTasks';
+import Tests from './Tests';
 import PageNotFound from './PageNotFound';
-import './App.module.scss';
 
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { useState, createContext } from 'react';
-
+import { UnderDevelopment } from './UnderDevelopment';
+import Header from '../components/Header';
 export const Context = createContext();
 
 const App = () => {
@@ -15,17 +14,14 @@ const App = () => {
     <>
       <Context.Provider value={{ draggedElement, setDraggedElement }}>
         <BrowserRouter basename='/quick-grammar'>
-          <header>
-            <nav>
-              <NavLink to='/'>Home</NavLink>
-              <NavLink to='/Exercise'>Exercise</NavLink>
-            </nav>
-          </header>
+          <Header />
 
           <main>
             <Routes>
-              <Route index element={<Home />} />
-              <Route path='/Exercise' element={<NewExerciseTasks />} />
+              <Route path='/' element={<Tests />} />
+              <Route path='/tenses/*' element={<UnderDevelopment />} />
+              <Route path='/tests' element={<UnderDevelopment />} />
+              <Route path='/about' element={<UnderDevelopment />} />
               <Route path='/*' element={<PageNotFound />} />
             </Routes>
           </main>

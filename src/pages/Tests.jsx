@@ -1,10 +1,10 @@
-import Exercise from './Exercise';
-import { newTasksData } from './NewTasksData';
+import Exercise from '../components/Exercise';
+import MOCK_TESTS from '../data/mock_tests';
 
-const NewExerciseTasks = () => {
+const Tests = () => {
   return (
     <>
-      {newTasksData.map((item) => {
+      {MOCK_TESTS.map((item) => {
         return (
           <Exercise
             key={item.id}
@@ -18,4 +18,4 @@ const NewExerciseTasks = () => {
   );
 };
 
-export default NewExerciseTasks;
+export default Tests;

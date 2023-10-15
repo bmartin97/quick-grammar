@@ -1,7 +1,7 @@
 import Card from '../components/Card';
 import { CARD_COLORS } from '../components/Helper';
 
-export const newTasksData = [
+export default [
   {
     id: Math.random(),
     taskName: 'Simple Past',

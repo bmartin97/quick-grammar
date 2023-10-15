@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 1400px;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 40px auto;
+  font-weight: 600;
+}
+
+.logo {
+  font-size: 1.8rem;
+}
+
+.navigation {
+  padding: 0;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navItem {
+  font-size: 1.2rem;
+  color: black;
+  cursor: pointer;
+  position: relative;
+  font-weight: 600;
+  text-decoration: none;
+
+  &.active {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .subMenuContainer {
+    display: none;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px solid black;
+    padding: 15px 15px;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  &:hover .subMenuContainer {
+    display: block;
+  }
+
+  .subMenuItem {
+    display: block;
+
+    & .navItem {
+      font-size: 1rem;
+    }
+
+    & + .subMenuItem {
+      margin-top: 7px;
+    }
+
+    > a {
+      white-space: nowrap;
+    }
+  }
+}

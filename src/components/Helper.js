@@ -10,3 +10,7 @@ export const DROPAREA_THEMES = {
   dashed: 'Dashed',
   cartoon: 'Cartoon'
 };
+
+export function getRandomElementOf(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}

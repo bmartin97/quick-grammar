@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import DropArea from '../components/DropArea';
+import DropArea from './DropArea';
 import styles from './Exercise.module.scss';
-import { DROPAREA_THEMES } from '../components/Helper';
+import { DROPAREA_THEMES } from './Helper';
 
 const Exercise = ({ defaultItems, taskName, description }) => {
   const [taskId] = useState(Math.random());

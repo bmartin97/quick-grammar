@@ -3,6 +3,7 @@ import { Context } from '../pages/App';
 
 import styles from './DropArea.module.scss';
 import DraggableItem from './DraggableItem';
+import { Line } from './DraggableItem';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DROPAREA_THEMES } from './Helper';
@@ -13,10 +14,13 @@ function DropArea({ defaultItems, theme, taskId }) {
   const element = useRef();
   const classes = [styles.dropArea, styles[theme]];
   const nonDraggedElement = (item) => item.key !== draggedElement.key;
-
+  const [showLine, setShowLine] = useState(false);
+  const [showLineStrong, setShowLineStrong] = useState(true);
   const isNewItem = () => element.current !== draggedElement.source;
 
   const handleOnDrop = (event) => {
+    setShowLine(false);
+    setShowLineStrong(true);
     if (event.target !== element.current) {
       return;
     }
@@ -44,6 +48,16 @@ function DropArea({ defaultItems, theme, taskId }) {
       setItems(clearedItems.toSpliced(targetIndex, 0, draggedElement));
   };
 
+  const handleDragOver = (event) => {
+    event.preventDefault();
+    setShowLine(true);
+  };
+
+  const handleDragLeave = (event) => {
+    event.preventDefault();
+    setShowLine(false);
+  };
+
   const removeDraggedElement = () => {
     setItems([...items.filter(nonDraggedElement)]);
   };
@@ -54,9 +68,8 @@ function DropArea({ defaultItems, theme, taskId }) {
       ref={element}
       className={classes.join(' ')}
       onDrop={handleOnDrop}
-      onDragOver={(event) => {
-        event.preventDefault();
-      }}>
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}>
       {items.map((item, index) => {
         const { component: Component, props, value } = item;
         item.key = value + index;
@@ -71,11 +84,14 @@ function DropArea({ defaultItems, theme, taskId }) {
                 taskId: taskId
               })
             }
-            onDrop={() => handleItemDrop(value)}>
+            onDrop={() => handleItemDrop(value)}
+            onDragOver={() => setShowLineStrong(false)}
+            onDragLeave={() => setShowLineStrong(true)}>
             <Component {...props} />
           </DraggableItem>
         );
       })}
+      {showLineStrong && showLine && <Line />}
     </div>
   );
 }

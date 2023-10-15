@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
+function DraggableItem({
+  children,
+  onDrag,
+  onDragEnd,
+  onDrop,
+  onDragOver,
+  onDragLeave
+}) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -17,8 +24,14 @@ function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
         onDrop();
         setHover(false);
       }}
-      onDragOver={() => setHover(true)}
-      onDragLeave={() => setHover(false)}>
+      onDragOver={() => {
+        onDragOver();
+        setHover(true);
+      }}
+      onDragLeave={() => {
+        onDragLeave();
+        setHover(false);
+      }}>
       {hover && <Line />}
       {children}
     </div>

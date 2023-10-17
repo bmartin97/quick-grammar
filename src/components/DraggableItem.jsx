@@ -32,7 +32,12 @@ function DraggableItem({
         onDragLeave();
         setHover(false);
       }}>
-      {hover && <Line />}
+      <div
+        style={{
+          marginTop: '-8px'
+        }}>
+        {hover && <Line />}
+      </div>
       {children}
     </div>
   );
@@ -42,6 +47,8 @@ DraggableItem.propTypes = {
   children: PropTypes.node.isRequired,
   onDrag: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func,
+  onDragOver: PropTypes.func,
+  onDragLeave: PropTypes.func,
   onDrop: PropTypes.func.isRequired
 };
 
@@ -51,7 +58,8 @@ export const Line = () => (
       width: '5px',
       backgroundColor: 'blue',
       height: '30px',
-      marginRight: '10px'
+      marginRight: '10px',
+      marginTop: '8px'
     }}
   />
 );

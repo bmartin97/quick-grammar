@@ -6,10 +6,12 @@ function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
 
   return (
     <div
+      className={'draggable'}
       draggable
       style={{
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: '5px'
       }}
       onDrag={onDrag}
       onDragEnd={onDragEnd}
@@ -17,8 +19,31 @@ function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
         onDrop();
         setHover(false);
       }}
-      onDragOver={() => setHover(true)}
-      onDragLeave={() => setHover(false)}>
+      onDragOver={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setHover(true);
+      }}
+      onDragLeave={(e) => {
+        e.preventDefault();
+        // child elements shouldn't have this functionality
+        e.stopPropagation();
+        // object has draggable class
+        if (e.target.classList.contains('draggable')) {
+          // prevent flickering when entering a child
+          let rect = e.target.getBoundingClientRect();
+          let mouseX = e.clientX;
+          let mouseY = e.clientY;
+          if (
+            mouseX < rect.left ||
+            mouseX >= rect.right ||
+            mouseY < rect.top ||
+            mouseY >= rect.bottom
+          ) {
+            setHover(false);
+          }
+        }
+      }}>
       {hover && <Line />}
       {children}
     </div>
@@ -34,11 +59,13 @@ DraggableItem.propTypes = {
 
 export const Line = () => (
   <div
+    className={'draggable'}
     style={{
       width: '5px',
       backgroundColor: 'blue',
       height: '30px',
-      marginRight: '10px'
+      marginRight: '10px',
+      pointerEvents: 'none'
     }}
   />
 );

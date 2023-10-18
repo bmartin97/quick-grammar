@@ -14,13 +14,17 @@ function DropArea({ defaultItems, theme, taskId }) {
   const element = useRef();
   const classes = [styles.dropArea, styles[theme]];
   const nonDraggedElement = (item) => item.key !== draggedElement.key;
-  const [showLine, setShowLine] = useState(false);
-  const [showLineStrong, setShowLineStrong] = useState(true);
+  const HOVER_STATE = {
+    NONE: 'drag-hover-none',
+    ITEM: 'drag-hover-item',
+    AREA: 'drag-hover-area'
+  };
+  const [hover, setHover] = useState(HOVER_STATE.NONE);
+
   const isNewItem = () => element.current !== draggedElement.source;
 
   const handleOnDrop = (event) => {
-    setShowLine(false);
-    setShowLineStrong(true);
+    setHover(HOVER_STATE.NONE);
     if (event.target !== element.current) {
       return;
     }
@@ -50,12 +54,12 @@ function DropArea({ defaultItems, theme, taskId }) {
 
   const handleDragOver = (event) => {
     event.preventDefault();
-    setShowLine(true);
+    if (HOVER_STATE.NONE == hover) setHover(HOVER_STATE.AREA);
   };
 
   const handleDragLeave = (event) => {
     event.preventDefault();
-    setShowLine(false);
+    if (hover == HOVER_STATE.AREA) setHover(HOVER_STATE.NONE);
   };
 
   const removeDraggedElement = () => {
@@ -85,13 +89,15 @@ function DropArea({ defaultItems, theme, taskId }) {
               })
             }
             onDrop={() => handleItemDrop(value)}
-            onDragOver={() => setShowLineStrong(false)}
-            onDragLeave={() => setShowLineStrong(true)}>
+            onDragOver={() => setHover(HOVER_STATE.ITEM)}
+            onDragLeave={() => {
+              if (hover == HOVER_STATE.ITEM) setHover(HOVER_STATE.NONE);
+            }}>
             <Component {...props} />
           </DraggableItem>
         );
       })}
-      {showLineStrong && showLine && <Line />}
+      {HOVER_STATE.AREA == hover && <Line />}
     </div>
   );
 }

@@ -8,6 +8,10 @@
   border: 5px;
 }
 
+.dropArea * > * {
+  pointer-events: none;
+}
+
 .Dashed {
   min-height: 87px;
   border-radius: 20px;

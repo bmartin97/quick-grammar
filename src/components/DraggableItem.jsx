@@ -34,7 +34,8 @@ function DraggableItem({
       }}>
       <div
         style={{
-          marginTop: '-8px'
+          display: 'flex',
+          alignItems: 'center'
         }}>
         {hover && <Line />}
       </div>

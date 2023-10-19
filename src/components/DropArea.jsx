@@ -3,6 +3,7 @@ import { Context } from '../pages/App';
 
 import styles from './DropArea.module.scss';
 import DraggableItem from './DraggableItem';
+import { Line } from './DraggableItem';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DROPAREA_THEMES } from './Helper';
@@ -13,10 +14,17 @@ function DropArea({ defaultItems, theme, taskId }) {
   const element = useRef();
   const classes = [styles.dropArea, styles[theme]];
   const nonDraggedElement = (item) => item.key !== draggedElement.key;
+  const HOVER_STATE = {
+    NONE: 'drag-hover-none',
+    ITEM: 'drag-hover-item',
+    AREA: 'drag-hover-area'
+  };
+  const [hover, setHover] = useState(HOVER_STATE.NONE);
 
   const isNewItem = () => element.current !== draggedElement.source;
 
   const handleOnDrop = (event) => {
+    setHover(HOVER_STATE.NONE);
     if (event.target !== element.current) {
       return;
     }
@@ -44,6 +52,16 @@ function DropArea({ defaultItems, theme, taskId }) {
       setItems(clearedItems.toSpliced(targetIndex, 0, draggedElement));
   };
 
+  const handleDragOver = (event) => {
+    event.preventDefault();
+    if (HOVER_STATE.NONE == hover) setHover(HOVER_STATE.AREA);
+  };
+
+  const handleDragLeave = (event) => {
+    event.preventDefault();
+    if (hover == HOVER_STATE.AREA) setHover(HOVER_STATE.NONE);
+  };
+
   const removeDraggedElement = () => {
     setItems([...items.filter(nonDraggedElement)]);
   };
@@ -54,9 +72,8 @@ function DropArea({ defaultItems, theme, taskId }) {
       ref={element}
       className={classes.join(' ')}
       onDrop={handleOnDrop}
-      onDragOver={(event) => {
-        event.preventDefault();
-      }}>
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}>
       {items.map((item, index) => {
         const { component: Component, props, value } = item;
         item.key = value + index;
@@ -71,11 +88,16 @@ function DropArea({ defaultItems, theme, taskId }) {
                 taskId: taskId
               })
             }
-            onDrop={() => handleItemDrop(value)}>
+            onDrop={() => handleItemDrop(value)}
+            onDragOver={() => setHover(HOVER_STATE.ITEM)}
+            onDragLeave={() => {
+              if (hover == HOVER_STATE.ITEM) setHover(HOVER_STATE.NONE);
+            }}>
             <Component {...props} />
           </DraggableItem>
         );
       })}
+      {HOVER_STATE.AREA == hover && <Line />}
     </div>
   );
 }

@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
+function DraggableItem({
+  children,
+  onDrag,
+  onDragEnd,
+  onDrop,
+  onDragOver,
+  onDragLeave
+}) {
   const [hover, setHover] = useState(false);
 
   return (
@@ -17,9 +24,21 @@ function DraggableItem({ children, onDrag, onDragEnd, onDrop }) {
         onDrop();
         setHover(false);
       }}
-      onDragOver={() => setHover(true)}
-      onDragLeave={() => setHover(false)}>
-      {hover && <Line />}
+      onDragOver={() => {
+        onDragOver();
+        setHover(true);
+      }}
+      onDragLeave={() => {
+        onDragLeave();
+        setHover(false);
+      }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+        {hover && <Line />}
+      </div>
       {children}
     </div>
   );
@@ -29,6 +48,8 @@ DraggableItem.propTypes = {
   children: PropTypes.node.isRequired,
   onDrag: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func,
+  onDragOver: PropTypes.func,
+  onDragLeave: PropTypes.func,
   onDrop: PropTypes.func.isRequired
 };
 
@@ -38,7 +59,8 @@ export const Line = () => (
       width: '5px',
       backgroundColor: 'blue',
       height: '30px',
-      marginRight: '10px'
+      marginRight: '10px',
+      marginTop: '8px'
     }}
   />
 );

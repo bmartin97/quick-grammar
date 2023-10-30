@@ -1,32 +1,14 @@
 .dropArea {
-  max-width: 100%;
-  display: inline-flex;
-  flex-wrap: wrap;
-  padding: 15px;
-  gap: 10px;
-  align-items: start;
-  border: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
 }
 
-.dropArea * > * {
+.line {
   pointer-events: none;
-}
-
-.Dashed {
-  min-height: 87px;
-  border-radius: 20px;
-  border-style: dashed;
-  width: 800px;
-  background-color: transparent;
-}
-
-.Cartoon {
-  min-height: 97px;
-  width: 600px;
-  border-width: 6px;
-  border-bottom: 14px;
-  border-style: solid;
-  font-weight: 600;
-  background-color: #fdeedd;
-  border-color: #422b11;
+  width: 5px;
+  background-color: blue;
+  height: 30px;
+  margin-right: 10px;
+  margin-top: 8px;
 }

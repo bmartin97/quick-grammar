@@ -7,8 +7,8 @@ export const CARD_COLORS = {
 };
 
 export const DROPAREA_THEMES = {
-  dashed: 'Dashed',
-  cartoon: 'Cartoon'
+  dashed: 'dashed',
+  cartoon: 'cartoon'
 };
 
 export function getRandomElementOf(arr) {

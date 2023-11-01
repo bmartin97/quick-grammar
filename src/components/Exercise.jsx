@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import DropArea from './DropArea';
+import Box from './Box';
 import styles from './Exercise.module.scss';
 import { DROPAREA_THEMES } from './Helper';
 
@@ -14,12 +13,12 @@ const Exercise = ({ defaultItems, taskName, description }) => {
         <p>{description}</p>
       </div>
       <div className={styles.exercise}>
-        <DropArea
+        <Box
           theme={DROPAREA_THEMES.dashed}
           defaultItems={defaultItems}
           taskId={taskId}
         />
-        <DropArea
+        <Box
           theme={DROPAREA_THEMES.cartoon}
           defaultItems={[]}
           taskId={taskId}
@@ -27,12 +26,6 @@ const Exercise = ({ defaultItems, taskName, description }) => {
       </div>
     </div>
   );
-};
-
-Exercise.propTypes = {
-  defaultItems: PropTypes.array.isRequired,
-  taskName: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
 };
 
 export default Exercise;

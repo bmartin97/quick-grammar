@@ -1,0 +1,30 @@
+.box {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  border: 5px;
+
+  > *:first-child {
+    padding-left: 20px;
+  }
+}
+
+.dashed {
+  min-height: 87px;
+  border-radius: 20px;
+  border-style: dashed;
+  width: 800px;
+  background-color: transparent;
+}
+
+.cartoon {
+  min-height: 89px;
+  width: 600px;
+  border-width: 6px;
+  border-bottom: 14px;
+  border-style: solid;
+  font-weight: 600;
+  background-color: #fdeedd;
+  border-color: #422b11;
+}

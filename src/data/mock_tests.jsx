@@ -41,7 +41,7 @@ export default [
       '  The simple present tense (all called the present tense) is used to express action that is happening in the present, now, relative to the speaker or writer.',
     defaultItems: [
       {
-        value: 'G-0',
+        value: 'Ga-0',
         component: Card,
         props: {
           text: 'He',
@@ -49,7 +49,7 @@ export default [
         }
       },
       {
-        value: 'G-1',
+        value: 'Ga-1',
         component: Card,
         props: {
           text: 'loves',
@@ -57,7 +57,7 @@ export default [
         }
       },
       {
-        value: 'G-2',
+        value: 'Ga-2',
         component: Card,
         props: {
           text: 'math',
@@ -73,7 +73,7 @@ export default [
       'The simple future tense (also called the future tense) is used to express action that will certainly occur at any time later than now.',
     defaultItems: [
       {
-        value: 'G-0',
+        value: 'Gf-0',
         component: Card,
         props: {
           text: 'You',
@@ -81,7 +81,7 @@ export default [
         }
       },
       {
-        value: 'G-1',
+        value: 'Gf-1',
         component: Card,
         props: {
           text: 'will',
@@ -89,7 +89,7 @@ export default [
         }
       },
       {
-        value: 'G-2',
+        value: 'Gf-2',
         component: Card,
         props: {
           text: 'learn',

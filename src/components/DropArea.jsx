@@ -11,12 +11,19 @@ const DropArea = ({ onDrop, children, fullWidth }) => {
     return <div className={styles.line} />;
   };
 
+  const isDraggedElementChildOfDropArea = () =>
+    !draggedElement || itemRef.current.contains(draggedElement?.element);
+
   return (
     <div
       ref={itemRef}
       className={styles.dropArea}
       style={fullWidth ? { flexGrow: 1 } : {}}
       onDrop={() => {
+        if (isDraggedElementChildOfDropArea()) {
+          return;
+        }
+
         onDrop();
 
         setHover(false);
@@ -24,10 +31,7 @@ const DropArea = ({ onDrop, children, fullWidth }) => {
       onDragOver={(e) => {
         e.preventDefault();
 
-        if (
-          !draggedElement ||
-          itemRef.current.contains(draggedElement?.element)
-        ) {
+        if (isDraggedElementChildOfDropArea()) {
           return;
         }
 

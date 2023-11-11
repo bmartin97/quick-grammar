@@ -1,14 +1,8 @@
-import styles from './Card.module.scss';
+import { CardColor, CardProps } from '@/interfaces';
+import styles from './styles/Card.module.scss';
 
-type CardColor = 'orange' | 'blue' | 'yellow' | 'magenta' | 'green';
-
-interface Props {
-  text: string;
-  color: CardColor;
-}
-
-function Card({ text, color }: Props) {
-  const classes = [styles.card, styles[color]];
+function Card({ text, color }: CardProps) {
+  const classes = [styles.card, styles[CardColor[color]]];
 
   return <div className={classes.join(' ')}>{text}</div>;
 }

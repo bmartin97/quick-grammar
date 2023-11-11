@@ -1,5 +1,5 @@
 import { useState, useRef, ReactNode } from 'react';
-import styles from './DropArea.module.scss';
+import styles from './styles/DropArea.module.scss';
 import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 
 interface Props {

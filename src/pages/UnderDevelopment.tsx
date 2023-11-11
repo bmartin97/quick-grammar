@@ -1,4 +1,4 @@
-import { getRandomElementOf } from '../components/Helper';
+import { getRandomElementOf } from '../helpers';
 
 const GIF_URLS = [
   'M8NOboaCB2MAAAAC/peter-griffin-nails.gif',

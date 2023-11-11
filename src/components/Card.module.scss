@@ -6,7 +6,7 @@ $yellow: #f5ef5f;
 $magenta: #ff00ff;
 $green: #2da15d;
 
-@mixin draggable($color) {
+@mixin card($color) {
   $dark-color: darken($color, $dark-degree);
   background-color: $color;
   border-color: $dark-color;
@@ -31,21 +31,21 @@ $green: #2da15d;
 }
 
 .orange {
-  @include draggable($orange);
+  @include card($orange);
 }
 
 .blue {
-  @include draggable($blue);
+  @include card($blue);
 }
 
 .yellow {
-  @include draggable($yellow);
+  @include card($yellow);
 }
 
 .magenta {
-  @include draggable($magenta);
+  @include card($magenta);
 }
 
 .green {
-  @include draggable($green);
+  @include card($green);
 }

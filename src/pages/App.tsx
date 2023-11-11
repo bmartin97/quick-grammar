@@ -3,16 +3,17 @@ import PageNotFound from './PageNotFound';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import { UnderDevelopment } from './UnderDevelopment';
 import Header from '../components/Header';
-export const Context = createContext();
+import { DraggedElementContext } from '@/hooks/useDraggedElementContext';
 
 const App = () => {
   const [draggedElement, setDraggedElement] = useState(null);
   return (
     <>
-      <Context.Provider value={{ draggedElement, setDraggedElement }}>
+      <DraggedElementContext.Provider
+        value={{ draggedElement, setDraggedElement }}>
         <BrowserRouter basename='/quick-grammar'>
           <Header />
 
@@ -26,7 +27,7 @@ const App = () => {
             </Routes>
           </main>
         </BrowserRouter>
-      </Context.Provider>
+      </DraggedElementContext.Provider>
     </>
   );
 };

@@ -1,13 +1,22 @@
-import { useContext } from 'react';
-import { Context } from '../pages/App';
-
 import styles from './Box.module.scss';
 import DraggableItem from './DraggableItem';
 import { useState } from 'react';
 import DropArea from './DropArea';
+import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 
-function Box({ defaultItems, theme }) {
-  const { draggedElement, setDraggedElement } = useContext(Context);
+export interface Item {
+  value: string;
+  component: (...args) => JSX.Element;
+  props: Record<string, any>;
+}
+
+interface Props {
+  defaultItems: Item[];
+  theme: 'dashed' | 'cartoon';
+}
+
+function Box({ defaultItems, theme }: Props) {
+  const { draggedElement, setDraggedElement } = useDraggedElementContext();
   const [items, setItems] = useState(defaultItems);
 
   const isNewItem = () => items.every((i) => i.value !== draggedElement.value);
@@ -26,6 +35,7 @@ function Box({ defaultItems, theme }) {
     const targetIndex = newItems.findIndex((x) => x.value === targetValue);
 
     // insert the dropped element to the new position
+    // @ts-expect-error  TODO: replace with splice
     setItems(newItems.toSpliced(targetIndex, 0, draggedElement));
   };
 
@@ -40,6 +50,7 @@ function Box({ defaultItems, theme }) {
     }
 
     // insert the dropped element to the new position
+    // @ts-expect-error   TODO: replace with splice
     setItems(newItems.toSpliced(items.length, 0, draggedElement));
   };
 

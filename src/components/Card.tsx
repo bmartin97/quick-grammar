@@ -1,6 +1,13 @@
 import styles from './Card.module.scss';
 
-function Card({ text, color }) {
+type CardColor = 'orange' | 'blue' | 'yellow' | 'magenta' | 'green';
+
+interface Props {
+  text: string;
+  color: CardColor;
+}
+
+function Card({ text, color }: Props) {
   const classes = [styles.card, styles[color]];
 
   return <div className={classes.join(' ')}>{text}</div>;

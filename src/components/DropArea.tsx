@@ -1,9 +1,15 @@
-import { useState, useContext, useRef } from 'react';
-import { Context } from '../pages/App';
+import { useState, useRef, ReactNode } from 'react';
 import styles from './DropArea.module.scss';
+import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 
-const DropArea = ({ onDrop, children, fullWidth }) => {
-  const { draggedElement } = useContext(Context);
+interface Props {
+  onDrop: () => void;
+  fullWidth?: boolean;
+  children?: ReactNode;
+}
+
+const DropArea = ({ onDrop, fullWidth, children }: Props) => {
+  const { draggedElement } = useDraggedElementContext();
   const [hover, setHover] = useState(false);
   const itemRef = useRef(null);
 

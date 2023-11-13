@@ -1,44 +1,25 @@
-import { useState } from 'react';
-import Box, { Item } from './Box';
-import Card from './Card';
+import Box from './Box';
 import styles from './styles/Exercise.module.scss';
 import { CardProps } from '@/interfaces';
+import { transformCardPropsToItems } from '@/helpers';
+import OrderableDropContainer from './core/OrderableDropContainer';
 
 interface Props {
   options: CardProps[];
   solution: string[];
 }
 
-function transformCardPropsToItems(cardProps: CardProps[]): Item[] {
-  return cardProps.map(({ text, color }) => ({
-    value: text,
-    component: Card,
-    props: { text, color }
-  }));
-}
-
-const BoxDrop = ({ options, solution }: Props) => {
-  const [solutionBoxContent, setSolutionBoxContent] = useState<Item[]>();
-
-  function checkSolution() {
-    const currentSolution = solutionBoxContent.map((card) => card.value);
-
-    if (currentSolution.join() === solution.join()) {
-      alert('Good Answer!');
-    } else {
-      alert('Wrong Answer!');
-    }
-  }
-
+const BoxDrop = ({ options }: Props) => {
   return (
     <div className={styles.exercise}>
-      <Box theme={'dashed'} defaultItems={transformCardPropsToItems(options)} />
-      <Box
-        theme={'cartoon'}
-        defaultItems={[]}
-        onUpdate={setSolutionBoxContent}
-      />
-      <button onClick={checkSolution}>Check</button>
+      <Box theme={'dashed'}>
+        <OrderableDropContainer
+          defaultItems={transformCardPropsToItems(options)}
+        />
+      </Box>
+      <Box theme={'cartoon'}>
+        <OrderableDropContainer defaultItems={[]} />
+      </Box>
     </div>
   );
 };

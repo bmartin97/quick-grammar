@@ -1,21 +1,22 @@
-import { useState, useRef, ReactNode } from 'react';
-import styles from './styles/DropArea.module.scss';
+import { useRef, ReactNode } from 'react';
+import styles from '../styles/DropArea.module.scss';
 import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 
-interface Props {
+export interface DropAreaProps {
   onDrop: () => void;
+  onHoverChange?: (isHovered: boolean) => void;
   fullWidth?: boolean;
   children?: ReactNode;
 }
 
-const DropArea = ({ onDrop, fullWidth, children }: Props) => {
+const DropArea = ({
+  onDrop = () => {},
+  onHoverChange = () => {},
+  fullWidth = false,
+  children
+}: DropAreaProps) => {
   const { draggedElement } = useDraggedElementContext();
-  const [hover, setHover] = useState(false);
   const itemRef = useRef(null);
-
-  const Line = () => {
-    return <div className={styles.line} />;
-  };
 
   const isDraggedElementChildOfDropArea = () =>
     !draggedElement || itemRef.current.contains(draggedElement?.element);
@@ -32,7 +33,7 @@ const DropArea = ({ onDrop, fullWidth, children }: Props) => {
 
         onDrop();
 
-        setHover(false);
+        onHoverChange(false);
       }}
       onDragOver={(e) => {
         e.preventDefault();
@@ -41,14 +42,13 @@ const DropArea = ({ onDrop, fullWidth, children }: Props) => {
           return;
         }
 
-        setHover(true);
+        onHoverChange(true);
       }}
       onDragLeave={(e) => {
         if (!itemRef.current.contains(e.relatedTarget)) {
-          setHover(false);
+          onHoverChange(false);
         }
       }}>
-      {hover && <Line />}
       {children}
     </div>
   );

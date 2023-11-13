@@ -1,11 +1,11 @@
 import { DragEventHandler, ReactNode } from 'react';
 
-interface Props {
+interface DraggableItemProps {
   onDrag: DragEventHandler;
   children?: ReactNode;
 }
 
-function DraggableItem({ onDrag, children }: Props) {
+function DraggableItem({ onDrag, children }: DraggableItemProps) {
   return (
     <div draggable onDrag={onDrag}>
       {children}

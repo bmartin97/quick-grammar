@@ -1,8 +1,20 @@
-import { createContext, useContext } from 'react';
+import { Item } from '@/interfaces';
+import { Dispatch, createContext, useContext } from 'react';
 
-export const DraggedElementContext = createContext(null);
+interface DraggedElement extends Item {
+  element: EventTarget;
+  removeFromCurrentPosition: () => void;
+}
 
-export const useDraggedElementContext = () => {
+interface DraggedElementContextType {
+  draggedElement: DraggedElement;
+  setDraggedElement: Dispatch<DraggedElement>;
+}
+
+export const DraggedElementContext =
+  createContext<DraggedElementContextType | null>(null);
+
+export const useDraggedElementContext = (): DraggedElementContextType => {
   const context = useContext(DraggedElementContext);
 
   if (!context) {

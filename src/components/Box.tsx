@@ -1,6 +1,6 @@
-import styles from './Box.module.scss';
+import styles from './styles/Box.module.scss';
 import DraggableItem from './DraggableItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DropArea from './DropArea';
 import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 
@@ -12,12 +12,19 @@ export interface Item {
 
 interface Props {
   defaultItems: Item[];
+  onUpdate?: (items: Item[]) => void;
   theme: 'dashed' | 'cartoon';
 }
 
-function Box({ defaultItems, theme }: Props) {
+function Box({ defaultItems, theme, onUpdate }: Props) {
   const { draggedElement, setDraggedElement } = useDraggedElementContext();
-  const [items, setItems] = useState(defaultItems);
+  const [items, setItems] = useState<Item[]>(defaultItems);
+
+  useEffect(() => {
+    if (!onUpdate) return;
+
+    onUpdate(items);
+  }, [items, onUpdate]);
 
   const isNewItem = () => items.every((i) => i.value !== draggedElement.value);
 

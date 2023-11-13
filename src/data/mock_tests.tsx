@@ -1,5 +1,5 @@
 import Card from '../components/Card';
-import { CARD_COLORS } from '../components/Helper';
+import { CARD_COLORS } from '../helpers';
 
 export default [
   {

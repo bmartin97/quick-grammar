@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { UnderDevelopment } from './UnderDevelopment';
 import Header from '../components/Header';
-import DraggedElementProvider from '@/components/DraggedElementProvider';
+import DraggedElementProvider from '@/hooks/DraggedElementProvider';
 
 const App = () => {
   return (

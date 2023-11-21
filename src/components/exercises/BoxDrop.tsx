@@ -1,8 +1,8 @@
-import Box from './Box';
-import styles from './styles/Exercise.module.scss';
+import Box from '../Box';
+import styles from '../styles/Exercise.module.scss';
 import { CardProps } from '@/interfaces';
 import { transformCardPropsToItems } from '@/helpers';
-import OrderableDropContainer from './core/OrderableDropContainer';
+import OrderableDropContainer from '../core/OrderableDropContainer';
 
 interface Props {
   options: CardProps[];

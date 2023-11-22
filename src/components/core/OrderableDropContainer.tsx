@@ -1,12 +1,26 @@
 import DraggableItem from '../core/DraggableItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 import DropAreaWithIndicator from '../core/DropAreaWithIndicator';
 import { Item } from '@/interfaces';
 
-function OrderableDropContainer({ defaultItems }) {
+interface OrderableDropContainerProps {
+  defaultItems: Item[];
+  onChange?: (newValue: Item[]) => void;
+}
+
+function OrderableDropContainer({
+  defaultItems,
+  onChange
+}: OrderableDropContainerProps) {
   const { draggedElement, setDraggedElement } = useDraggedElementContext();
   const [items, setItems] = useState<Item[]>(defaultItems);
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(items);
+    }
+  }, [items, onChange]);
 
   const isNewItem = () => items.every((i) => i.value !== draggedElement.value);
 

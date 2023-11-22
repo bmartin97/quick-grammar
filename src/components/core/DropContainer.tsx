@@ -1,12 +1,23 @@
 import DraggableItem from '../core/DraggableItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 import DropArea from './DropArea';
 import { Item } from '@/interfaces';
 
-function DropContainer({ defaultItems }) {
+interface DropContainerProps {
+  defaultItems: Item[];
+  onChange?: (newValue: Item[]) => void;
+}
+
+function DropContainer({ defaultItems, onChange }: DropContainerProps) {
   const { draggedElement, setDraggedElement } = useDraggedElementContext();
   const [items, setItems] = useState<Item[]>(defaultItems);
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(items);
+    }
+  }, [items, onChange]);
 
   const isNewItem = () => items.every((i) => i.value !== draggedElement.value);
 

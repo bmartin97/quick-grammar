@@ -19,7 +19,7 @@ export const useDraggedElementContext = (): DraggedElementContextType => {
 
   if (!context) {
     throw new Error(
-      'useDraggedElementContext must be used inside the ThemeProvider'
+      'useDraggedElementContext must be used inside the DraggedElementProvider'
     );
   }
 

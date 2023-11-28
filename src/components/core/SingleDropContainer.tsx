@@ -1,15 +1,27 @@
 import DraggableItem from '../core/DraggableItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDraggedElementContext } from '@/hooks/useDraggedElementContext';
 import DropArea from './DropArea';
 import { Item } from '@/interfaces';
 
+interface SingleDropContainerProps {
+  defaultItem: Item;
+  onChange?: (newValue: Item) => void;
+}
+
 // Currently work only if the container is empty
-function SingleDropContainer({ defaultItem }) {
+function SingleDropContainer({
+  defaultItem,
+  onChange
+}: SingleDropContainerProps) {
   const { draggedElement, setDraggedElement } = useDraggedElementContext();
   const [item, setItem] = useState<Item>(defaultItem);
 
-  // const isNewItem = () => item.value !== draggedElement.value;
+  useEffect(() => {
+    if (onChange) {
+      onChange(item);
+    }
+  }, [item, onChange]);
 
   const updateContainer = () => {
     if (item) {

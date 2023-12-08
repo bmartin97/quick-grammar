@@ -1,4 +1,6 @@
 import { getRandomElementOf } from '../helpers';
+import {Box,Typography, Card, Button, Link} from "@mui/material";
+
 
 const GIF_URLS = [
   'M8NOboaCB2MAAAAC/peter-griffin-nails.gif',
@@ -11,19 +13,29 @@ const GIF_URLS = [
 
 export const UnderDevelopment = () => {
   return (
-    <div
-      style={{
+    <>
+    <Box
+      sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: '100px'
+        mt: 50 /* mt means marginTop */
       }}>
-      <h1>Sorry, but this page is under development</h1>
-      <br />
-      <img
+      <Typography variant="h4">Sorry, but this page is under development</Typography>
+      <br/>
+      <Card
         height={500}
+        component="img"
         src={`https://media.tenor.com/${getRandomElementOf(GIF_URLS)}`}
       />
-    </div>
+    </Box>
+
+    <Box  sx={{mt: 10, textAlign: "center", display: "flex", justifyContent:"center", alignItems: "center", flexDirection: "column"}}>
+      <Button variant="contained">It is not finished yet</Button>
+      <Button variant="contained" sx={{bgcolor: "red",m: 5}}>
+        <Link sx={{textDecoration: "none", color: "#fff"}} href="https://mui.com/material-ui/getting-started/">If you want to know more about MUI, click here!</Link>
+      </Button>
+    </Box>
+</>
   );
 };

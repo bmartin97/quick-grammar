@@ -4,20 +4,28 @@ import { CardProps } from '@/interfaces';
 import { transformCardPropsToItems } from '@/helpers';
 import OrderableDropContainer from '../core/OrderableDropContainer';
 
-interface Props {
+interface BoxDropProps {
   options: CardProps[];
   solution: string[];
 }
 
-const BoxDrop = ({ options }: Props) => {
+const BoxDrop = ({ options }: BoxDropProps) => {
   return (
     <div className={styles.exercise}>
-      <Box theme={'dashed'}>
+      <Box
+        sx={{
+          minWidth: 600,
+          height: 60
+        }}>
         <OrderableDropContainer
           defaultItems={transformCardPropsToItems(options)}
         />
       </Box>
-      <Box theme={'cartoon'}>
+      <Box
+        sx={{
+          minWidth: 600,
+          height: 60
+        }}>
         <OrderableDropContainer defaultItems={[]} />
       </Box>
     </div>

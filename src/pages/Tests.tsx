@@ -9,7 +9,7 @@ const BOX_DROP_OPTIONS: CardProps[] = [
   },
   {
     text: 'table',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'is',
@@ -17,7 +17,7 @@ const BOX_DROP_OPTIONS: CardProps[] = [
   },
   {
     text: 'book',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'on',
@@ -41,31 +41,31 @@ const DROP_FILL_GAPS_SENTENCES = [
 const DROP_FILL_GAPS_OPTIONS: CardProps[] = [
   {
     text: 'under',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'above',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'in',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'through',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'beside',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'on',
-    color: CardColor.yellow
+    color: CardColor.orange
   },
   {
     text: 'at',
-    color: CardColor.yellow
+    color: CardColor.orange
   }
 ];
 

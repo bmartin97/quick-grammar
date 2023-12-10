@@ -1,33 +1,46 @@
-import styles from './styles/Box.module.scss';
+import { Paper, PaperProps, Stack } from '@mui/material';
 
 interface BoxProps {
-  theme: 'dashed' | 'cartoon';
-  width?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
-  inline?: boolean;
-  orientation?: 'row' | 'column';
   children: any;
+  defaultPadding?: boolean;
+  orientation?: 'row' | 'column';
 }
 
 function Box({
-  theme,
   orientation = 'row',
-  width = '600px',
-  height = '88px',
-  inline = false,
-  children
-}: BoxProps) {
+  defaultPadding = true,
+  children,
+  ...PaperProps
+}: BoxProps & PaperProps) {
+  const CONTAINER_PADDING = {
+    row: {
+      ['> *:first-child']: {
+        pl: 2
+      }
+    },
+    column: {
+      ['> *']: {
+        pl: 1.5
+      },
+      ['> *:first-child']: {
+        pt: 2
+      }
+    }
+  };
+
   return (
-    <div
-      className={[styles.box, styles[theme]].join(' ')}
-      style={{
-        display: inline ? 'inline-flex' : 'flex',
-        flexDirection: orientation,
-        minWidth: width,
-        minHeight: height
-      }}>
-      {children}
-    </div>
+    <Paper {...(PaperProps as PaperProps)}>
+      <Stack
+        flexDirection={orientation}
+        flexWrap={'wrap'}
+        alignItems={'stretch'}
+        maxWidth={'100%'}
+        height={'100%'}
+        flexGrow={1}
+        sx={defaultPadding ? CONTAINER_PADDING[orientation] : {}}>
+        {children}
+      </Stack>
+    </Paper>
   );
 }
 

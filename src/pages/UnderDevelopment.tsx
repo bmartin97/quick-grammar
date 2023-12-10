@@ -11,6 +11,7 @@ const GIF_URLS = [
   '6-IJhkmMwR8AAAAd/typing-man.gif'
 ];
 
+
 export const UnderDevelopment = () => {
   return (
     <>

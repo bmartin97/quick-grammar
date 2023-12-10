@@ -6,7 +6,7 @@ interface BoxProps {
   orientation?: 'row' | 'column';
 }
 
-function Box({
+function CardStack({
   orientation = 'row',
   defaultPadding = true,
   children,
@@ -44,4 +44,4 @@ function Box({
   );
 }
 
-export default Box;
+export default CardStack;

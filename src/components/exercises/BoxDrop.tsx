@@ -1,8 +1,8 @@
-import Box from '../Box';
-import styles from '../styles/Exercise.module.scss';
+import CardStack from '../Box';
 import { CardProps } from '@/interfaces';
 import { transformCardPropsToItems } from '@/helpers';
 import OrderableDropContainer from '../core/OrderableDropContainer';
+import Stack from '@mui/material/Stack';
 
 interface BoxDropProps {
   options: CardProps[];
@@ -11,24 +11,26 @@ interface BoxDropProps {
 
 const BoxDrop = ({ options }: BoxDropProps) => {
   return (
-    <div className={styles.exercise}>
-      <Box
+    <Stack flexDirection={'column'} gap={2} alignItems={'center'}>
+      <CardStack
         sx={{
           minWidth: 600,
+          maxWidth: 800,
           height: 60
         }}>
         <OrderableDropContainer
           defaultItems={transformCardPropsToItems(options)}
         />
-      </Box>
-      <Box
+      </CardStack>
+      <CardStack
         sx={{
           minWidth: 600,
+          maxWidth: 800,
           height: 60
         }}>
         <OrderableDropContainer defaultItems={[]} />
-      </Box>
-    </div>
+      </CardStack>
+    </Stack>
   );
 };
 

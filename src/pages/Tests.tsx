@@ -1,6 +1,7 @@
 import { CardColor, CardProps } from '@/interfaces';
 import BoxDrop from '../components/exercises/BoxDrop';
 import DropFillGaps from '@/components/exercises/DropFillGaps';
+import { Box, Typography } from '@mui/material';
 
 const BOX_DROP_OPTIONS: CardProps[] = [
   {
@@ -73,12 +74,22 @@ const DROP_FILL_GAPS_SOLUTION = ['on', 'at', 'under', 'in', 'through'];
 const Tests = () => {
   return (
     <>
-      <BoxDrop options={BOX_DROP_OPTIONS} solution={BOX_DROP_SOLUTION} />;
-      <DropFillGaps
-        sentences={DROP_FILL_GAPS_SENTENCES}
-        options={DROP_FILL_GAPS_OPTIONS}
-        solution={DROP_FILL_GAPS_SOLUTION}
-      />
+      <Box mb={15}>
+        <Typography textAlign={'center'} variant='h4' mb={2}>
+          Drop Box
+        </Typography>
+        <BoxDrop options={BOX_DROP_OPTIONS} solution={BOX_DROP_SOLUTION} />
+      </Box>
+      <Box mb={15}>
+        <Typography textAlign={'center'} variant='h4' mb={2}>
+          Drop Fill Gaps
+        </Typography>
+        <DropFillGaps
+          sentences={DROP_FILL_GAPS_SENTENCES}
+          options={DROP_FILL_GAPS_OPTIONS}
+          solution={DROP_FILL_GAPS_SOLUTION}
+        />
+      </Box>
     </>
   );
 };

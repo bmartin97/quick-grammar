@@ -57,7 +57,8 @@ const InputFillGaps = ({ sentences, solution }: Props) => {
               key={index}
               type='text'
               id={createInputIndex(rowIndex)}
-              onChange={collectAnswers}></input>
+              onChange={collectAnswers}
+            />
           ) : null}
         </>
       ));

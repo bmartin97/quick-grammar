@@ -1,6 +1,7 @@
 import { CardColor, CardProps } from '@/interfaces';
 import BoxDrop from '../components/exercises/BoxDrop';
 import DropFillGaps from '@/components/exercises/DropFillGaps';
+import InputFillGaps from '@/components/exercises/InputFillGaps ';
 
 const BOX_DROP_OPTIONS: CardProps[] = [
   {
@@ -77,6 +78,10 @@ const Tests = () => {
       <DropFillGaps
         sentences={DROP_FILL_GAPS_SENTENCES}
         options={DROP_FILL_GAPS_OPTIONS}
+        solution={DROP_FILL_GAPS_SOLUTION}
+      />
+      <InputFillGaps
+        sentences={DROP_FILL_GAPS_SENTENCES}
         solution={DROP_FILL_GAPS_SOLUTION}
       />
     </>

@@ -1,4 +1,4 @@
-import CardStack from '../Box';
+import CardStack from '../CardStack';
 import { CardProps } from '@/interfaces';
 import { transformCardPropsToItems } from '@/helpers';
 import OrderableDropContainer from '../core/OrderableDropContainer';

@@ -1,6 +1,6 @@
 import { transformCardPropsToItems } from '@/helpers';
 import { CardProps } from '@/interfaces';
-import CardStack from '../Box';
+import CardStack from '../CardStack';
 import SingleDropContainer from '../core/SingleDropContainer';
 import DropContainer from '../core/DropContainer';
 import Typography from '@mui/material/Typography';
@@ -61,10 +61,10 @@ function DropFillGaps({ sentences, options }: Props) {
         {sentences.map((sentence, index) => (
           <Typography
             key={index}
-            style={{
+            sx={{
               display: 'flex',
               alignItems: 'center',
-              marginBottom: 10
+              mb: 1.5
             }}>
             {sentenceNumber(index + 1)} {transformSentence(sentence)}
           </Typography>

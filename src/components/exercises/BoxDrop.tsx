@@ -1,26 +1,36 @@
-import Box from '../Box';
-import styles from '../styles/Exercise.module.scss';
+import CardStack from '../CardStack';
 import { CardProps } from '@/interfaces';
 import { transformCardPropsToItems } from '@/helpers';
 import OrderableDropContainer from '../core/OrderableDropContainer';
+import Stack from '@mui/material/Stack';
 
-interface Props {
+interface BoxDropProps {
   options: CardProps[];
   solution: string[];
 }
 
-const BoxDrop = ({ options }: Props) => {
+const BoxDrop = ({ options }: BoxDropProps) => {
   return (
-    <div className={styles.exercise}>
-      <Box theme={'dashed'}>
+    <Stack flexDirection={'column'} gap={2} alignItems={'center'}>
+      <CardStack
+        sx={{
+          minWidth: 600,
+          maxWidth: 800,
+          height: 60
+        }}>
         <OrderableDropContainer
           defaultItems={transformCardPropsToItems(options)}
         />
-      </Box>
-      <Box theme={'cartoon'}>
+      </CardStack>
+      <CardStack
+        sx={{
+          minWidth: 600,
+          maxWidth: 800,
+          height: 60
+        }}>
         <OrderableDropContainer defaultItems={[]} />
-      </Box>
-    </div>
+      </CardStack>
+    </Stack>
   );
 };
 

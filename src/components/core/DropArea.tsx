@@ -15,7 +15,7 @@ const DropArea = ({
   fullWidth = false,
   children
 }: DropAreaProps) => {
-  const { draggedElement } = useDraggedElementContext();
+  const { draggedElement, setDraggedElement } = useDraggedElementContext();
   const itemRef = useRef(null);
 
   const isDraggedElementChildOfDropArea = () =>
@@ -25,7 +25,10 @@ const DropArea = ({
     <div
       ref={itemRef}
       className={styles.dropArea}
-      style={fullWidth ? { flexGrow: 1 } : {}}
+      style={{
+        userSelect: 'none',
+        flexGrow: fullWidth ? 1 : null
+      }}
       onDrop={() => {
         if (isDraggedElementChildOfDropArea()) {
           return;
@@ -34,6 +37,7 @@ const DropArea = ({
         onDrop();
 
         onHoverChange(false);
+        setDraggedElement(null);
       }}
       onDragOver={(e) => {
         e.preventDefault();

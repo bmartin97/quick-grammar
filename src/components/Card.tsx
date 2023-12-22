@@ -1,10 +1,37 @@
-import { CardColor, CardProps } from '@/interfaces';
-import styles from './styles/Card.module.scss';
+import { CardProps, CardColor } from '@/interfaces';
+import { Chip, keyframes } from '@mui/material';
+import { orange, blue, yellow, pink, green } from '@mui/material/colors';
+
+const colors = {
+  orange: orange,
+  blue: blue,
+  yellow: yellow,
+  magenta: pink,
+  green: green
+};
 
 function Card({ text, color }: CardProps) {
-  const classes = [styles.card, styles[CardColor[color]]];
+  const popupAnimation = keyframes`
+    from {
+    transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  `;
 
-  return <div className={classes.join(' ')}>{text}</div>;
+  return (
+    <Chip
+      sx={{
+        animation: `${popupAnimation} 200ms ease`,
+        backgroundColor: colors[CardColor[color]][800],
+        color: colors[CardColor[color]][50],
+        fontWeight: 600,
+        cursor: 'pointer'
+      }}
+      label={text}
+    />
+  );
 }
 
 export default Card;

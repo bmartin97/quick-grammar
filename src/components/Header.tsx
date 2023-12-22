@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import styles from './styles/Header.module.scss';
 import { NavLink } from 'react-router-dom';
 
@@ -10,69 +11,69 @@ function Header() {
       <div className={styles.logo}>QuickGrammar</div>
       <nav className={styles.navigation}>
         <NavLink className={navItemClasses} to='/'>
-          <span className={styles.mainMenuItem}>dev</span>
+          <Typography className={styles.mainMenuItem}>dev</Typography>
         </NavLink>
         <div className={styles.navItem}>
-          <span className={styles.mainMenuItem}>Tenses</span>
+          <Typography className={styles.mainMenuItem}>Tenses</Typography>
           <ul className={styles.subMenuContainer}>
             <li className={styles.subMenuItem}>
               <NavLink className={navItemClasses} to='/tenses/present-simple'>
-                <span>Present Simple</span>
+                <Typography>Present Simple</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink
                 className={navItemClasses}
                 to='/tenses/present-continuous'>
-                <span>Present Continuous</span>
+                <Typography>Present Continuous</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink
                 className={navItemClasses}
                 to='/tenses/present-perfect-simple'>
-                <span>Present Perfect Simple</span>
+                <Typography>Present Perfect Simple</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink
                 className={navItemClasses}
                 to='/tenses/present-perfect-Continuous'>
-                <span>Present Perfect Continuous</span>
+                <Typography>Present Perfect Continuous</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink className={navItemClasses} to='/tenses/past-simple'>
-                <span>Past Simple</span>
+                <Typography>Past Simple</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink className={navItemClasses} to='/tenses/past-continuous'>
-                <span>Past Continuous</span>
+                <Typography>Past Continuous</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink
                 className={navItemClasses}
                 to='/tenses/past-perfect-simple'>
-                <span>Past Perfect Simple</span>
+                <Typography>Past Perfect Simple</Typography>
               </NavLink>
             </li>
             <li className={styles.subMenuItem}>
               <NavLink
                 className={navItemClasses}
                 to='/tenses/past-perfect-Continuous'>
-                <span>Past Perfect Continuous</span>
+                <Typography>Past Perfect Continuous</Typography>
               </NavLink>
             </li>
           </ul>
         </div>
 
         <NavLink className={navItemClasses} to='/tests'>
-          <span className={styles.mainMenuItem}>Tests</span>
+          <Typography className={styles.mainMenuItem}>Tests</Typography>
         </NavLink>
         <NavLink className={navItemClasses} to='/about'>
-          <span className={styles.mainMenuItem}>About</span>
+          <Typography className={styles.mainMenuItem}>About</Typography>
         </NavLink>
       </nav>
     </header>
